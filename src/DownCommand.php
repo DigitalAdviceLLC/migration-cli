@@ -22,6 +22,7 @@ class DownCommand extends ConsoleCommand
     {
         try {
             $versionInfo = $this->migration->getCurrentVersion();
+            /*
             if (strpos($versionInfo['status'], 'partial') !== false) {
                 $helper = $this->getHelper('question');
                 $question = new ConfirmationQuestion(
@@ -35,6 +36,7 @@ class DownCommand extends ConsoleCommand
                     return;
                 }
             }
+            */
 
             parent::execute($input, $output);
             $this->migration->down($this->upTo, true);

@@ -15,6 +15,7 @@ abstract class UpdateCommandBase extends ConsoleCommand
     {
         try {
             $versionInfo = $this->migration->getCurrentVersion();
+            /*
             if (strpos($versionInfo['status'], 'partial') !== false) {
                 $helper = $this->getHelper('question');
                 $question = new ConfirmationQuestion(
@@ -28,6 +29,7 @@ abstract class UpdateCommandBase extends ConsoleCommand
                     return;
                 }
             }
+            */
 
             parent::execute($input, $output);
             $this->callMigrate();
