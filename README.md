@@ -5,6 +5,7 @@ Info: we write raw sql files for the DB migrations and place them inside /root/d
 
 eg: 
 CREATE TABLE sample_users ..... is placed in&as /root/db-migrations/migrations/up/005.sql
+
 DROP TABLE sample_users; is placed in&as /root/db-migrations/migrations/down/005.sql
 
 file-names/db-version numbers should match for same operation between up and dwn dirs, 
