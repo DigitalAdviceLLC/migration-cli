@@ -1,3 +1,33 @@
+-------
+FOR UVHERO
+
+Info: we write raw sql files for the DB migrations and place them inside /root/db-migrations/migrations/up, and respective revert/rollback sql is placed on /root/db-migrations/migrations/down
+
+eg: 
+CREATE TABLE sample_users ..... is placed in&as /root/db-migrations/migrations/up/005.sql
+DROP TABLE sample_users; is placed in&as /root/db-migrations/migrations/down/005.sql
+
+file-names/db-version numbers should match for same operation between up and dwn dirs, 
+
+place the raw sql with appropriate version number inside the up&down dirs then call the cli commands to execute the migrations
+
+Steps
+1. Update dependencies with composer from /root/inc
+2. navigate back to /root on your CLI
+3. only for the first time, install the setup using php migrate install(this will create a table migration_version and keep track of executed versions in there)
+4. run/update the migrations using php migrate up
+5. get the version using php migrate version and makesure you see the latest script code in this version
+
+Notes: php migrate up(up command) will run all the available/new migration scripts in one execution(up can take version 3 to version 8 in one call) but php migrate down(down command) is blocked to rollback one file/step per execution(down can only rollback to 4 from 5 in one execution, second execution to make it 3 from 4 is needed and so on)
+
+If you find any connectivity issues, make sure your port and hosts are configured properly in env vars, supply port on host string as DB_HOST = 'local_IP:mysql_port' in your .env, just in case.
+
+
+
+-------
+FROM ORIGINAL AUTHOR
+
+
 # Database Migrations (Cli)
 
 [![Opensource ByJG](https://img.shields.io/badge/opensource-byjg.com-brightgreen.svg)](http://opensource.byjg.com)
